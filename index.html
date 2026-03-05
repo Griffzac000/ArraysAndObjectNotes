@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays, Methods & Objects — Guided Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div class="notes-panel">
+      <h1>Arrays, Methods &amp; Objects</h1>
+      <p class="subtitle">Day 1 · Wed Mar 05 · Guided Notes · STARTER</p>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- WARM-UP: Loops Review -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge warmup">⚡ Warm-Up — Loops Review</span>
+        <h2>Quick Loop Recall</h2>
+        <p>Fill in the blanks from last lesson's Dynamic List Builder.</p>
+        <div class="code-block"><span class="comment">// TODO 1: Write a for loop that counts from 1 to 5</span>
+          <span class="todo">// YOUR CODE HERE</span>
+
+          <span class="comment">// TODO 2: Write a for...of loop over this array</span>
+          <span class="kw">const</span> fruits = [<span class="str">'apple'</span>, <span class="str">'banana'</span>, <span class="str">'cherry'</span>];
+          <span class="todo">// YOUR CODE HERE — log each fruit</span></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 1: Array Basics -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge core">📘 Section 1 — Array Basics</span>
+        <h2>Creating &amp; Accessing Arrays</h2>
+        <p>An array is an ordered list of values. Each item has an <strong>index</strong> starting at 0.</p>
+        <div class="code-block"><span class="comment">// TODO 3: Declare an array of 3 colors</span>
+          <span class="kw">const</span> colors = <span class="todo">/* YOUR CODE HERE */</span>;
+
+          <span class="comment">// TODO 4: Log the first color (index 0)</span>
+          console.<span class="fn">log</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+
+          <span class="comment">// TODO 5: Log the array's length</span>
+          console.<span class="fn">log</span>(<span class="todo">/* YOUR CODE HERE */</span>);</div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 2: Mutating Arrays -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge core">📘 Section 2 — Mutating Arrays</span>
+        <h2>push, pop, shift, unshift</h2>
+        <p><code>push</code> adds to the end · <code>pop</code> removes from the end · <code>shift</code> removes from front · <code>unshift</code> adds to front.</p>
+        <div class="code-block"><span class="kw">const</span> nums = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>];
+
+          <span class="comment">// TODO 6: Add 40 to the end using push</span>
+          <span class="todo">// YOUR CODE HERE</span>
+
+          <span class="comment">// TODO 7: Remove the last item using pop — store it in a variable</span>
+          <span class="kw">const</span> removed = <span class="todo">/* YOUR CODE HERE */</span>;
+          console.<span class="fn">log</span>(<span class="str">'Removed:'</span>, removed);  <span class="comment">// → 40</span>
+
+          <span class="comment">// TODO 8: Remove the first item using shift — store in a variable</span>
+          <span class="kw">const</span> first = <span class="todo">/* YOUR CODE HERE */</span>;
+          console.<span class="fn">log</span>(<span class="str">'First was:'</span>, first);    <span class="comment">// → 10</span></div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 3: Array Methods -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge core">📘 Section 3 — Array Methods</span>
+        <h2>forEach, map, filter</h2>
+        <p>These methods let you <em>iterate</em> and <em>transform</em> arrays without writing manual loops.</p>
+        <div class="code-block"><span class="kw">const</span> scores = [<span class="num">88</span>, <span class="num">72</span>, <span class="num">95</span>, <span class="num">61</span>, <span class="num">83</span>];
+
+          <span class="comment">// TODO 9: Use forEach to log each score</span>
+          scores.<span class="fn">forEach</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+
+          <span class="comment">// TODO 10: Use map to create a new array — each score + 5 bonus points</span>
+          <span class="kw">const</span> boosted = scores.<span class="fn">map</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+          console.<span class="fn">log</span>(boosted);
+
+          <span class="comment">// TODO 11: Use filter to get only scores >= 80</span>
+          <span class="kw">const</span> passing = scores.<span class="fn">filter</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+          console.<span class="fn">log</span>(passing);</div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 4: Objects -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge adv">🔷 Section 4 — Objects</span>
+        <h2>Object Literals &amp; Property Access</h2>
+        <p>An object stores related data as <strong>key: value</strong> pairs. Access properties with dot notation or bracket notation.</p>
+        <div class="code-block"><span class="comment">// TODO 12: Create a student object with name, grade, and isEnrolled</span>
+          <span class="kw">const</span> student = <span class="todo">/* YOUR CODE HERE */</span>;
+
+          <span class="comment">// TODO 13: Log the student's name using dot notation</span>
+          console.<span class="fn">log</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+
+          <span class="comment">// TODO 14: Add a new property 'school' with value 'Westview High'</span>
+          <span class="todo">// YOUR CODE HERE</span>
+
+          console.<span class="fn">log</span>(student);</div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 5: Array of Objects -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge adv">🔷 Section 5 — Arrays of Objects</span>
+        <h2>The Pattern We Use Everywhere</h2>
+        <p>Real data is almost always an <strong>array of objects</strong> — like a table in a database.</p>
+        <div class="code-block"><span class="kw">const</span> students = [
+          { name: <span class="str">'Aaliyah'</span>,  grade: <span class="num">92</span>, club: <span class="str">'Robotics'</span> },
+          { name: <span class="str">'Marcus'</span>,   grade: <span class="num">78</span>, club: <span class="str">'Chess'</span>    },
+          { name: <span class="str">'Priya'</span>,    grade: <span class="num">95</span>, club: <span class="str">'Robotics'</span> },
+          { name: <span class="str">'Devon'</span>,    grade: <span class="num">85</span>, club: <span class="str">'Art'</span>      },
+          ];
+
+          <span class="comment">// TODO 15: Use forEach to log each student's name and grade</span>
+          students.<span class="fn">forEach</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+
+          <span class="comment">// TODO 16: Use filter to get only Robotics club students</span>
+          <span class="kw">const</span> robotics = students.<span class="fn">filter</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+          console.<span class="fn">log</span>(robotics);</div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 6: DOM + Arrays of Objects -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="section">
+        <span class="section-badge dom">🌐 Section 6 — DOM Rendering</span>
+        <h2>Rendering Cards from an Array</h2>
+        <p>Loop over an array of objects and build DOM elements for each one — the core pattern of every data-driven web app.</p>
+        <div class="code-block"><span class="comment">// TODO 17: Select #card-list from the DOM</span>
+          <span class="kw">const</span> cardList = <span class="todo">/* YOUR CODE HERE */</span>;
+
+          <span class="comment">// TODO 18: forEach over students — for each student:</span>
+          <span class="comment">//   1. Create a div with class 'card'</span>
+          <span class="comment">//   2. Set innerHTML to show name + grade</span>
+          <span class="comment">//   3. Append to cardList</span>
+          students.<span class="fn">forEach</span>(<span class="todo">/* YOUR CODE HERE */</span>);
+
+          <span class="comment">// ── BONUS ──────────────────────────────────────</span>
+          <span class="comment">// TODO 19 (BONUS): Use map to create an array of</span>
+          <span class="comment">// just student names, then join() into a string</span>
+          <span class="comment">// and log "Class roster: Aaliyah, Marcus, ..."</span>
+          <span class="todo">// YOUR CODE HERE</span></div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Right Panel: Output -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="output-panel">
+      <div class="output-header">
+        <span class="output-dot"></span> Live Output
+      </div>
+      <div id="output">
+        <div class="label">// Console output will appear here as you complete TODOs...</div>
+
+        <div class="render-zone">
+          <h4>🌐 DOM Render — Student Cards (TODO 18)</h4>
+          <div id="card-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
