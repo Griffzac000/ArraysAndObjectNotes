@@ -1,128 +1,150 @@
-// ── Intercept console.log to show output in panel ──
-const output = document.getElementById('output');
-const _log = console.log;
-console.log = function (...args) {
-    _log(...args);
-    const line = document.createElement('div');
-    line.textContent = args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
-    output.insertBefore(line, output.querySelector('.render-zone'));
-};
-
-// ═══════════════════════════════════════════
-// WARM-UP: Loops Review (TODOs 1–2)
-// ═══════════════════════════════════════════
-console.log('── Warm-Up ──');
-
-// TODO 1: Write a for loop that counts from 1 to 5
-// YOUR CODE HERE
-for ( let i = 0; i < 5; i++ ) {
-    console.log(i);
-}
-
-const fruits = ['apple', 'banana', 'cherry'];
-// TODO 2: for...of loop — log each fruit
-// YOUR CODE HERE
-fruits.forEach(f => console.log(f));
-
-
-// ═══════════════════════════════════════════
-// SECTION 1: Array Basics (TODOs 3–5)
-// ═══════════════════════════════════════════
-console.log('── Section 1: Array Basics ──');
-
-// TODO 3: Declare an array of 3 colors
-const colors = ['red', 'green', 'blue'];
-
-// TODO 4: Log the first color (index 0)
-console.log([0]);
-
-// TODO 5: Log the array's length
-console.log(colors.length);
-
-
-
-// ═══════════════════════════════════════════
-// SECTION 2: Mutating Arrays (TODOs 6–8)
-// ═══════════════════════════════════════════
-console.log('── Section 2: Mutating Arrays ──');
-
-const nums = [10, 20, 30];
-
-// TODO 6: Add 40 to the end using push
-// YOUR CODE HERE
-nums.push(40)
-
-
-// TODO 7: Remove the last item using pop — store in removed
-const removed = nums.pop();
-console.log('Removed:', removed);
-
-// TODO 8: Remove the first item using shift — store in first
-const first = nums.shift();
-console.log('First was:', first);
-
-
-// ═══════════════════════════════════════════
-// SECTION 3: Array Methods (TODOs 9–11)
-// ═══════════════════════════════════════════
-console.log('── Section 3: forEach / map / filter ──');
-
-const scores = [88, 72, 95, 61, 83];
-
-// TODO 9: forEach — log each score
-scores.forEach(s => console.log(s));
-
-// TODO 10: map — each score + 5 bonus points
-const boosted = scores.map(s => s + 5);
-console.log('Boosted:', boosted);
-
-// TODO 11: filter — only scores >= 80
-const passing = scores.filter(s => s >= 80);
-console.log('Passing:', passing);
-
-
-// ═══════════════════════════════════════════
-// SECTION 4: Objects (TODOs 12–14)
-// ═══════════════════════════════════════════
-console.log('── Section 4: Objects ──');
-
-// TODO 12: Create a student object with name, grade, isEnrolled
-const student = {
-    name: "Eliza",
-    grade: 85,
-    isEnrolled: true
-}
-
-// TODO 13: Log the student's name using dot notation
-console.log(student.name);
-
-// TODO 14: Add a 'school' property
-// YOUR CODE HERE
-student.school = "Walker Career Center"
-
-console.log(student);
-
-
-// ═══════════════════════════════════════════
-// SECTION 5: Arrays of Objects (TODOs 15–16)
-// ═══════════════════════════════════════════
-console.log('── Section 5: Arrays of Objects ──');
-
-const students = [
-    {name: 'Aaliyah', grade: 92, club: 'Robotics'},
-    {name: 'Marcus', grade: 78, club: 'Chess'},
-    {name: 'Priya', grade: 95, club: 'Robotics'},
-    {name: 'Devon', grade: 85, club: 'Art'},
+/* ── Warm-Up Data ── */
+const roster = [
+    {name: "Amara Johnson", gpa: 3.8},
+    {name: "Devon Carter", gpa: 3.2},
+    {name: "Sofia Reyes", gpa: 3.9},
+    {name: "Marcus Lee", gpa: 2.7},
+    {name: "Priya Patel", gpa: 4.0},
+    {name: "Tyler Brooks", gpa: 3.5},
+    {name: "Leila Hassan", gpa: 3.6},
+    {name: "Caleb Wright", gpa: 2.9}
 ];
 
-// TODO 15: forEach — log each student's name and grade
-students.forEach(s => {
-    console.log(s.name)
-    console.log(s.grade);
+const warmupBtn = document.querySelector('#warmup-btn');
+
+warmupBtn.addEventListener('click', () => {
+    const highGpa = roster.filter(student => student.gpa >= 3.5);
+    document.querySelector('#warmup-result').textContent =
+        highGpa.length + " students with GPA ≥ 3.5";
 });
 
-// TODO 16: filter — only Robotics club students
-const robotics = students.filter(s => s.club !== 'Robotics');
-console.log('Robotics:', robotics);
+const warmupSearch = document.querySelector('#warmup-search');
+
+warmupSearch.addEventListener('input', () => {
+    const term = warmupSearch.value.toLowerCase();
+
+    const results = roster.filter(student =>
+        student.name.toLowerCase().includes(term)
+    );
+
+    document.querySelector('#warmup-result').textContent =
+        results.length + " students match '" + term + "'";
+});
 
 
+
+
+fetch("url")
+    .then(response => response.json())
+    .then(data => { console.log(data); })
+    .catch(err => { console.error(err); });
+
+
+fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json())
+    .then(data => console.log(data));
+
+
+const fetchBtn = document.querySelector('#fetch-btn');
+
+fetchBtn.addEventListener('click', () => {
+    const status = document.querySelector('#fetch-status');
+    const grid = document.querySelector('#user-grid');
+
+    status.textContent = "Loading...";
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+
+            let html = "";
+
+            data.forEach(user => {
+                html += `
+          <div class="card">
+            <h3>${user.name}</h3>
+            <p>${user.email}</p>
+          </div>
+        `;
+            });
+
+            grid.innerHTML = html;
+
+
+            status.textContent = "Loaded " + data.length + " users";
+
+
+            document.querySelector('#json-viewer').textContent =
+                JSON.stringify(data, null, 2);
+
+            document.querySelector('#json-viewer').classList.add("open");
+            document.querySelector('#json-toggle').classList.add("open");
+
+
+        })
+        .catch(err => {
+            const status = document.querySelector('#fetch-status');
+
+            status.textContent = "Error: " + err.message;
+            status.style.color = "#f07178";
+
+            const errorDisplay = document.querySelector('#error-display');
+            errorDisplay.classList.add("open");
+            errorDisplay.textContent = err.message;
+        });
+});
+
+const endpoint = document.querySelector('#fetch-select').value;
+const url = "https://jsonplaceholder.typicode.com" + endpoint;
+
+
+let html = "";
+
+if (endpoint === "/users") {
+    data.forEach(user => {
+        html += `
+      <div class="card">
+        <h3>${user.name}</h3>
+        <p>${user.email}</p>
+      </div>
+    `;
+    });
+
+} else if (endpoint === "/posts") {
+    data.forEach(post => {
+        html += `
+      <div class="card">
+        <h3>${post.title.slice(0,50)}</h3>
+        <p>${post.body.slice(0,80)}</p>
+      </div>
+    `;
+    });
+
+} else if (endpoint === "/todos") {
+    data.forEach(todo => {
+        html += `
+      <div class="card">
+        <h3>${todo.title}</h3>
+        <p>${todo.completed ? "✓ done" : "○ pending"}</p>
+      </div>
+    `;
+    });
+}
+
+grid.innerHTML = html;
+
+
+// Add a number input and button to the output panel.
+// On click, fetch /users/{id} (single object, not array).
+// Render: name, email, phone, website, company.name.
+
+
+/* ── JSON toggle (wired for you) ── */
+document.querySelector('#json-toggle').addEventListener('click', () => {
+    const viewer = document.querySelector('#json-viewer');
+    const toggle = document.querySelector('#json-toggle');
+    viewer.classList.toggle('open');
+    toggle.textContent = viewer.classList.contains('open')
+        ? '▴ hide raw JSON'
+        : '▾ show raw JSON';
+});
